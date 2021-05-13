@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Provider } from "react-redux";
+//Para que la aplicación se entere que tiene que leer la data, se envuelve en un Provider
+import Jugadores from "./components/Jugadores";
+import EquipoSeleccionado from "./components/EquipoSeleccionado";
+import store from "./store";
+import "./styles/styles.scss";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      {/*El Provider tiene que saber que va a proveer, se pasa el store como params */}
+      <main>
+        <h1>Manager</h1>
+        <Jugadores />
+        <EquipoSeleccionado />{" "}
+      </main>
+    </Provider>
   );
 }
 
